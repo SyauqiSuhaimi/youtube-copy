@@ -14,7 +14,17 @@
     </button>
   </div>
   <div class="grid grid-cols-5">
-    <videoCard v-for="(item, index) in videos" :key="index" />
+    <videoCard
+      :videoDetails="item"
+      v-for="(item, index) in videos"
+      :key="index"
+    />
+  </div>
+  <div class="items-center">
+    <span class="material-symbols-outlined text-right text-white">
+      smart_display
+    </span>
+    <span class="text-2xl font-bold"> Shorts</span>
   </div>
 </template>
 <script>
