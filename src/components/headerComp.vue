@@ -1,7 +1,10 @@
 <template lang="">
   <div class="navbar text-white">
     <div class="flex-none">
-      <button class="btn btn-square btn-ghost">
+      <button
+        class="btn btn-square btn-ghost"
+        @click="mainStoreState.toggleSidebar()"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -96,6 +99,15 @@
   </div>
 </template>
 <script>
-export default {};
+import { mainStore } from "@/stores/mainStore.js";
+export default {
+  setup() {
+    const mainStoreState = mainStore();
+
+    return {
+      mainStoreState,
+    };
+  },
+};
 </script>
 <style></style>

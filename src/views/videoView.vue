@@ -1,74 +1,10 @@
 <template lang="">
-  <div class="w-full flex gap-2 justify-items-stretch">
-    <div class="flex gap-2 overflow-x-auto">
-      <button
-        v-for="(item, index) in tags"
-        :key="index"
-        class="btn bg-neutral-700 hover:bg-neutral-600"
-      >
-        {{ item }}
-      </button>
-    </div>
-    <button class="btn btn-ghost btn-circle justify-self-end">
-      <span class="material-symbols-outlined text-white"> chevron_right </span>
-    </button>
-  </div>
-  <div class="grid grid-cols-5">
-    <videoCard
-      :videoDetails="item"
-      v-for="(item, index) in videos"
-      :key="index"
-      @click="goTo(index)"
-    />
-  </div>
-  <div class="flex items-center">
-    <span
-      class="material-symbols-outlined text-right text-white"
-      style="font-size: 30px"
-    >
-      smart_display
-    </span>
-    <span class="text-2xl font-bold ml-1"> Shorts</span>
-  </div>
-  <div class="grid grid-cols-7">
-    <shortComp
-      :videoDetails="item"
-      v-for="(item, index) in videos.slice(0, 7)"
-      :key="index"
-    />
-  </div>
+  <div>{{ currentVideo }}</div>
 </template>
 <script>
-import videoCard from "../components/videoCard.vue";
-import shortComp from "@/components/shortComp.vue";
 export default {
-  components: {
-    videoCard,
-    shortComp,
-  },
   data() {
     return {
-      tags: [
-        "All",
-        "New To You",
-        "React",
-        "Angular",
-        "Vue",
-        "JavaScript",
-        "Python",
-        "Django",
-        "Flask",
-
-        "Spring",
-        "Kotlin",
-        "Swift",
-        "Android",
-        "Machine Learning",
-        "Data Science",
-        "Gaming",
-        "Cooking",
-        "Music",
-      ],
       videos: [
         {
           title: "Introduction to React",
@@ -131,12 +67,11 @@ export default {
           timeUploaded: "1 day ago",
         },
       ],
+      currentVideo: {},
     };
   },
-  methods: {
-    goTo(index) {
-      this.$router.push("/video/" + index);
-    },
+  mounted() {
+    this.currentVideo = this.videos[this.$route.params.id];
   },
 };
 </script>
